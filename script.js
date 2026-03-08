@@ -8,8 +8,8 @@ function handleLogin() {
                 localStorage.setItem('loggedIn', 'true');
                 window.location.href = 'main.html';
             } else {
-                document.getElementById('error').classList.remove('hidden');
                 alert("Wrong username or password");
+                document.getElementById('error').classList.remove('hidden');
             }
         }
 // --- Load Data ---
@@ -102,7 +102,7 @@ function renderCards(issues) {
 
 
 
-
+//FilterIssues Function
 function filterIssues(type, btn) {
 
     const buttons = document.querySelectorAll(".tab-btn");
@@ -123,17 +123,6 @@ function filterIssues(type, btn) {
     const filtered = allData.filter(issue => issue.status === type);
     renderCards(filtered);
 }
-// --- Filter Function ---
-// function filterIssues(type) {
-//     if (type === "all") {
-//         renderCards(allData);
-//         return;
-//     }
-
-//     const filtered = allData.filter(issue => issue.status === type);
-//     renderCards(filtered);
-// }
-
 // --- Search Function ---
 async function handleSearch() {
     const text = document.getElementById("searchInput").value;
