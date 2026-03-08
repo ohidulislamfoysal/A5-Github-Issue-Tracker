@@ -184,6 +184,46 @@ async function openModal(id) {
         console.error("Error opening modal:", error);
     }
 }
+// Loader spinner 
+async function loadData() {
 
+    const loader = document.getElementById("loader");
+    loader.classList.remove("hidden");
+
+    try {
+        const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+        const json = await res.json();
+        allData = json.data;
+        renderCards(allData);
+    } catch (error) {
+        console.error("Error loading data:", error);
+    }
+
+    loader.classList.add("hidden");
+}
+//Search loader function
+async function handleSearch() {
+
+    const loader = document.getElementById("loader");
+    loader.classList.remove("hidden");
+
+    const text = document.getElementById("searchInput").value;
+
+    if (!text) {
+        renderCards(allData);
+        loader.classList.add("hidden");
+        return;
+    }
+
+    try {
+        const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`);
+        const json = await res.json();
+        renderCards(json.data);
+    } catch (error) {
+        console.error("Error searching issues:", error);
+    }
+
+    loader.classList.add("hidden");
+}
 // Initialize Application
 loadData();
