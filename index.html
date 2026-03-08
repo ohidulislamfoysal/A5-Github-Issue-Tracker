@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,19 +45,7 @@
             <p class="text-xs text-gray-500">Password: <span class="font-mono">admin123</span></p>
         </div>
     </div>
-    <script>
-        function handleLogin() {
-            const u = document.getElementById('username').value;
-            const p = document.getElementById('password').value;
-
-            if(u === 'admin' && p === 'admin123') {
-                localStorage.setItem('loggedIn', 'true');
-                window.location.href = 'main.html';
-            } else {
-                document.getElementById('error').classList.remove('hidden');
-            }
-        }
-    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>
